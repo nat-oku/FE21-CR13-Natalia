@@ -100,10 +100,11 @@ class EventsController extends AbstractController
             $this->addFlash(
                 'notice',
                 'New Event Added'
-            )
+            );
+            return $this->redirectToRoute('index');
         }
         return $this->render('events/create.html.twig', 
-            array('form'=>$form->creatveView())
+            array('form'=>$form->createView())
         );
     }
 

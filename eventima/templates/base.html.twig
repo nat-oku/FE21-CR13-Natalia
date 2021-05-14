@@ -18,6 +18,14 @@
     </head>
     <body>
         {{include('components/navbar.html.twig')}}
+        
+        <!-- adding Flash -->
+        {% for message in app.flashes('notice') %}
+            <div class="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+
         {% block body %}{% endblock %}
     
     <!-- adding CDN for Bootstrap JS -->
