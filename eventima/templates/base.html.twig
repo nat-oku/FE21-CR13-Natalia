@@ -21,7 +21,7 @@
         
         <!-- adding Flash -->
         {% for message in app.flashes('notice') %}
-            <div class="alert">
+            <div class="alert alert-success">
                 {{ message }}
             </div>
         {% endfor %}
