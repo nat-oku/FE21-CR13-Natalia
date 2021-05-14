@@ -124,10 +124,13 @@ class EventsController extends AbstractController
         ]);
     }
 
+    // function for displayind a details page for each event
     public function details($id): Response
     {
-        return $this->render('events/details.html.twig', [
-            
-        ]);
+        $events = $this->getDoctrine()->getRepository('App:Events')->find($id);
+        //dd($events);
+        return $this->render('events/details.html.twig', 
+            array('events'=>$events)
+        );
     }
 }
