@@ -5,6 +5,12 @@
 {% block body %}
 <div class="container">
     if you see this, index works
+    <a href="/" class="btn btn-dark">All</a>
+    <a href="/concert" class="btn btn-dark">Concert</a>
+    <a href="/exhibition" class="btn btn-dark">Exhibition</a>
+    <a href="/open-air" class="btn btn-dark">Open air</a>
+    <a href="/festival" class="btn btn-dark">Festival</a>
+
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         {% for event in eventsAll %}
         <div class="col">

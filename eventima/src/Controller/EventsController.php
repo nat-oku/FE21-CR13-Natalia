@@ -49,7 +49,7 @@ class EventsController extends AbstractController
             ->add('date_time', DateTimeType::class, array('attr' => array('style'=>'margin-bottom:15px')))
 
             //event-type dropdown field
-            ->add('event_type', ChoiceType::class, array('choices'=>array('exhibition'=>'exhibition', 'concert'=>'concert', 'open-air concert'=>'open-air concert', 'festival'=>'festival'),'attr' => array('class'=> 'form-control', 'style'=>'margin-botton:15px')))
+            ->add('event_type', ChoiceType::class, array('choices'=>array('exhibition'=>'exhibition', 'concert'=>'concert', 'open-air cinema'=>'open-air cinema', 'festival'=>'festival'),'attr' => array('class'=> 'form-control', 'style'=>'margin-botton:15px')))
 
             //submit button
             ->add('save', SubmitType::class, array('label'=> 'Create Event', 'attr' => array('class'=> 'btn-primary', 'style'=>'margin-bottom:15px')))
@@ -139,7 +139,7 @@ class EventsController extends AbstractController
             ->add('date_time', DateTimeType::class, array('attr' => array('style'=>'margin-bottom:15px')))
 
             //event-type dropdown field
-            ->add('event_type', ChoiceType::class, array('choices'=>array('exhibition'=>'exhibition', 'concert'=>'concert', 'open-air concert'=>'open-air concert', 'festival'=>'festival'),'attr' => array('class'=> 'form-control', 'style'=>'margin-botton:15px')))
+            ->add('event_type', ChoiceType::class, array('choices'=>array('exhibition'=>'exhibition', 'concert'=>'concert', 'open-air cinema'=>'open-air cinema', 'festival'=>'festival'),'attr' => array('class'=> 'form-control', 'style'=>'margin-botton:15px')))
 
             //submit button
             ->add('save', SubmitType::class, array('label'=> 'Save Changes', 'attr' => array('class'=> 'btn-primary', 'style'=>'margin-bottom:15px')))
@@ -216,4 +216,31 @@ class EventsController extends AbstractController
             array('events'=>$events)
         );
     }
+
+    public function indexFilt(Request $request, string $event_type): Response {
+        $repository = $this->getDoctrine()->getRepository(Events::class);
+        $events  = $repository->findAll();
+
+        //dd($event_type);
+        if($event_type == 'concert') {
+            $events  = $repository->findBy(['event_type'=>'concert']);
+            //dd($event);        
+        } else if($event_type == 'exhibition'){
+            $events  = $repository->findBy(['event_type'=>'exhibition']);
+            //dd($event);    
+        } else if($event_type == 'open-air'){
+            $events  = $repository->findBy(['event_type'=>'open-air']);
+            //dd($event);
+        } else if($event_type == 'festival'){
+            $events  = $repository->findBy(['event_type'=>'festival']);
+            //dd($event);
+        }
+
+            
+            
+        return $this->render('events/index.html.twig', 
+        array('eventsAll'=>$events)
+        );
+    }
+
 }
