@@ -15,6 +15,7 @@
                     <p class="card-text">{{event.eventDescr}} </p>
                     <p class="card-text">Date: {{event.dateTime | date('d/m/Y ')}} </p>
                     <p class="card-text">Time: {{event.dateTime | date('H:i')}} </p>
+                    <a href="/details/{{event.id}}" class="btn btn-primary">Details</a>
                 </div>
             </div>
         </div>
