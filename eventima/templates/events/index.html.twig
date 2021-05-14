@@ -3,32 +3,41 @@
 {% block title %}Welcome to Eventima{% endblock %}
 
 {% block body %}
-<div class="container">
-    if you see this, index works
-    <a href="/" class="btn btn-dark">All</a>
-    <a href="/concert" class="btn btn-dark">Concert</a>
-    <a href="/exhibition" class="btn btn-dark">Exhibition</a>
-    <a href="/open-air" class="btn btn-dark">Open air</a>
-    <a href="/festival" class="btn btn-dark">Festival</a>
+<section id="events">
+    <div class="container mt-3 mb-3">
+        <h2 id="#events" class="text-center">Our Events</h2>
+        <div class="btn-group mt-2 mb-2" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Choose Event Type
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <li><a class="dropdown-item" href="/">All</a></li>
+                <li><a class="dropdown-item" href="/exhibition">Exhibition</a></li>
+                <li><a class="dropdown-item" href="/concert">Concert</a></li>
+                <li><a class="dropdown-item" href="/open-air">Open Air Movies</a></li>
+                <li><a class="dropdown-item" href="/festival">Festival</a></li>
+            </ul>
+        </div>
+        
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="#events">
+            {% for event in eventsAll %}
+            <div class="col">
+                <div class="card">
+                <img src="{{event.eventImg}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ event.eventName }}</h5>
+                        <p class="card-text">{{event.eventDescr}} </p>
+                        <p class="card-text">Date: {{event.dateTime | date('d/m/Y ')}} </p>
+                        <p class="card-text">Time: {{event.dateTime | date('H:i')}} </p>
+                        <a href="/details/{{event.id}}" class="btn btn-primary">Details</a>
+                        <a href="/edit/{{event.id}}" class="btn btn-warning">Edit</a>
+                        <a href="/delete/{{event.id}}" class="btn btn-danger">Delete</a>
 
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="#events">
-        {% for event in eventsAll %}
-        <div class="col">
-            <div class="card">
-            <img src="{{event.eventImg}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ event.eventName }}</h5>
-                    <p class="card-text">{{event.eventDescr}} </p>
-                    <p class="card-text">Date: {{event.dateTime | date('d/m/Y ')}} </p>
-                    <p class="card-text">Time: {{event.dateTime | date('H:i')}} </p>
-                    <a href="/details/{{event.id}}" class="btn btn-primary">Details</a>
-                    <a href="/edit/{{event.id}}" class="btn btn-warning">Edit</a>
-                    <a href="/delete/{{event.id}}" class="btn btn-danger">Delete</a>
-
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
-</div>
+</section>
 {% endblock %}
