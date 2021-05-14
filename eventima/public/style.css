@@ -1,0 +1,51 @@
+
+/* styling the bg image of the header */
+.containerImg{
+  background: url(https://images.unsplash.com/photo-1603228254119-e6a4d095dc59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=751&q=80) no-repeat center fixed;
+  -webkit-background-cover: cover;
+  -moz-background-cover: cover;
+  -o-background-cover: cover;
+  background-size: cover;
+  height: 100vh;
+  }
+
+.navbar{
+    background: transparent !important;
+    z-index: 1;
+}
+
+/* stylings for the navbar */
+nav {
+  z-index: 1;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.3);
+  width: 99%;
+}
+
+nav a {
+  color: #1E2128;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+.btn {
+  background-color: #1E2128;
+  color: #fff;
+}
+
+.btn:hover{
+  background-color: #fff;
+  color: #1E2128;
+}
+
+.btnEventColor:active {
+  background-color: #fff;
+  color: #1E2128;
+  -webkit-transition: ease-in-out;
+  transition: ease-in-out;
+}
+
+.height50{
+  height: 50%;
+}
