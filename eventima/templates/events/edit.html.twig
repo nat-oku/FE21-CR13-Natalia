@@ -3,6 +3,7 @@
 {% block title %}Hello EventsController!{% endblock %}
 
 {% block body %}
+{{include('components/navbar.html.twig')}}
 <div class="container">
     if you see this, edit works
     <h2 class="page-header">Edit Event {{events.eventName}}</h2>

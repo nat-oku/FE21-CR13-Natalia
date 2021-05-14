@@ -29,6 +29,10 @@ nav a:hover {
   color: #fff;
 }
 
+.yellow-hover a:hover {
+  color: #F5C518;
+}
+
 .btn {
   background-color: #1E2128;
   color: #fff;

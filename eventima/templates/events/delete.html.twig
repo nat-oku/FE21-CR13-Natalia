@@ -3,6 +3,7 @@
 {% block title %}Hello EventsController!{% endblock %}
 
 {% block body %}
+{{include('components/navbar.html.twig')}}
 <div class="container">
     if you see this, delete works
     <h2 class="page-header">Delete Event {{events.eventName}}</h2>
