@@ -186,9 +186,25 @@ class EventsController extends AbstractController
     // function for deleting events from DB
     public function delete($id): Response
     {
-        return $this->render('events/delete.html.twig', [
-            
-        ]);
+        $entityMngr = $this->getDoctrine()->getManager();
+        $events = $entityMngr->getRepository('App:Events')->find($id);
+        //dd($events);
+        
+        //removing the row & preparing it for update of DB
+        $entityMngr->remove($events);
+
+        //query --> updating the DB
+        $entityMngr->flush();
+        $this->addFlash(
+            'notice',
+            'Event has been deleted'
+        );
+
+        return $this->redirectToRoute('index');
+
+        return $this->render('events/delete.html.twig',
+            array('events' => $events, 'form' => $form->createView())
+        );
     }
 
     // function for displayind a details page for each event
