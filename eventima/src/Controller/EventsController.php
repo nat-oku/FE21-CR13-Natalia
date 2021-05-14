@@ -109,11 +109,78 @@ class EventsController extends AbstractController
     }
 
     // function for editing event
-    public function edit($id): Response
+    public function edit(Request $request, $id): Response
     {
-        return $this->render('events/edit.html.twig', [
+        $events = $this->getDoctrine()->getRepository('App:Events')->find($id);
+
+        $events->setEventName($events->getEventName());
+        $events->setEventDescr($events->getEventDescr());
+        $events->setEventImg($events->getEventImg());
+        $events->setEventCapac($events->getEventCapac());
+        $events->setContEmail($events->getContEmail());
+        $events->setContPhone($events->getContPhone());
+        $events->setEventAddress($events->getEventAddress());
+        $events->setEventUrl($events->getEventUrl());
+        $events->setEventType($events->getEventType());
+        $events->setDateTime($events->getDateTime());
+        //dd($events);
+
+        $form = $this->createFormBuilder($events)
+            ->add('event_name', TextType::class, array('attr' => array('class'=> 'form-control', 'style'=>'margin-botton:15px')))
+            ->add('event_descr', TextType::class, array('attr' => array('class'=> 'form-control', 'style'=>'margin-bottom:15px')))        
+            ->add('event_img', TextType::class, array('attr' => array('class'=> 'form-control', 'style'=>'margin-bottom:15px')))        
+            ->add('event_capac', TextType::class, array('attr' => array('class'=> 'form-control', 'style'=>'margin-bottom:15px')))        
+            ->add('cont_email', TextType::class, array('attr' => array('class'=> 'form-control', 'style'=>'margin-bottom:15px')))        
+            ->add('cont_phone', TextType::class, array('attr' => array('class'=> 'form-control', 'style'=>'margin-bottom:15px')))        
+            ->add('event_address', TextType::class, array('attr' => array('class'=> 'form-control', 'style'=>'margin-bottom:15px')))
+            ->add('event_url', TextType::class, array('attr' => array('class'=> 'form-control', 'style'=>'margin-bottom:15px')))        
+
+            //date-time field
+            ->add('date_time', DateTimeType::class, array('attr' => array('style'=>'margin-bottom:15px')))
+
+            //event-type dropdown field
+            ->add('event_type', ChoiceType::class, array('choices'=>array('exhibition'=>'exhibition', 'concert'=>'concert', 'open-air concert'=>'open-air concert', 'festival'=>'festival'),'attr' => array('class'=> 'form-control', 'style'=>'margin-botton:15px')))
+
+            //submit button
+            ->add('save', SubmitType::class, array('label'=> 'Save Changes', 'attr' => array('class'=> 'btn-primary', 'style'=>'margin-bottom:15px')))
+            ->getForm();
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            //fetching data
+            $event_name = $form['event_name']->getData();
+            //dd($event_name);
+            $event_descr = $form['event_descr']->getData();
+            $event_img = $form['event_img']->getData();
+            $event_capac = $form['event_capac']->getData();
+            $cont_email = $form['cont_email']->getData();
+            $cont_phone = $form['cont_phone']->getData();
+            $event_address = $form['event_address']->getData();
+            $event_url = $form['event_url']->getData();
+            $date_time = $form['date_time']->getData();
+            $event_type = $form['event_type']->getData();
+            //dd($event_name);
+
+            $entityMngr = $this->getDoctrine()->getManager();
             
-        ]);
+            //preparing data for upload to DB
+            $entityMngr->persist($events);
+
+            //query -- uploading data to DB
+            $entityMngr->flush();
+
+            //adding flash -- short msg to be display after submit
+            $this->addFlash(
+                'notice',
+                'Event has been updated'
+            );
+            return $this->redirectToRoute('index');
+        }
+
+
+        return $this->render('events/edit.html.twig',
+            array('events' => $events, 'form' => $form->createView())
+        );
     }
 
     // function for deleting events from DB

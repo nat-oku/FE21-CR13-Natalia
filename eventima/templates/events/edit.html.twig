@@ -5,5 +5,12 @@
 {% block body %}
 <div class="container">
     if you see this, edit works
+    <h2 class="page-header">Edit Event {{events.eventName}}</h2>
+    <img src="{{events.eventImg}}" class="img-thumbnail" alt="{{events.eventName}}">
+    {{form_start(form)}}
+
+    {{form_widget(form)}}
+
+    {{form_end(form)}}
 </div>
 {% endblock %}
