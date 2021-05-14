@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+//importing the Events Entity
+use App\Entity\Events;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,13 +13,17 @@ class EventsController extends AbstractController
 {
     public function index(): Response
     {
-        return $this->render('events/index.html.twig', [
-            
-        ]);
+        // fetch all items from the class Events
+        $events = $this->getDoctrine()->getRepository('App:Events')->findAll();
+         //dd($events);
+        return $this->render('events/index.html.twig', 
+            array('eventsAll'=>$events)
+        );
     }
 
+    // function for adding event to DB
     public function create(): Response
-    {
+    {   
         return $this->render('events/create.html.twig', [
             
         ]);
