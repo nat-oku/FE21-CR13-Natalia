@@ -53,3 +53,15 @@ nav a:hover {
 .height50{
   height: 50%;
 }
+
+.cardZoom {
+  -webkit-transition: -webkit-transform 0.2s ease;
+  transition: -webkit-transform 0.2s ease;
+  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, -webkit-transform 0.2s ease;
+}
+
+.cardZoom:hover {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
