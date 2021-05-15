@@ -1,12 +1,12 @@
 
 /* styling the bg image of the header */
 .containerImg{
-  background: url(https://images.unsplash.com/photo-1603228254119-e6a4d095dc59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=751&q=80) no-repeat center fixed;
+  background: url(https://images.unsplash.com/photo-1603228254119-e6a4d095dc59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=751&q=80) no-repeat center bottom fixed;
   -webkit-background-cover: cover;
   -moz-background-cover: cover;
   -o-background-cover: cover;
   background-size: cover;
-  height: 85vh;
+  height: 70vh;
   }
 
 .navbar{
@@ -73,4 +73,10 @@ nav a:hover {
   /* none can be an option too as cover may deform it*/
   -o-object-position: 50% 50%;
      object-position: 50% 50%;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
 }
