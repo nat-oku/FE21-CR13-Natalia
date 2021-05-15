@@ -24,16 +24,21 @@
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="#events">
             {% for event in eventsAll %}
             <div class="col">
-                <div class="card">
+                <div class="card cardZoom">
                 <img src="{{event.eventImg}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ event.eventName }}</h5>
-                        <p class="card-text">{{event.eventDescr}} </p>
-                        <p class="card-text">Date: {{event.dateTime | date('d/m/Y ')}} </p>
-                        <p class="card-text">Time: {{event.dateTime | date('H:i')}} </p>
-                        <a href="/details/{{event.id}}" class="btn btn-primary">Details</a>
-                        <a href="/edit/{{event.id}}" class="btn btn-warning">Edit</a>
-                        <a href="/delete/{{event.id}}" class="btn btn-danger">Delete</a>
+                        <p class="card-text border-bottom">{{event.eventDescr}}</p>
+                        <div class="mt-2 mb-2">
+                            <p class="card-text m-0"><small class="text-muted">Date: {{event.dateTime | date('d/m/Y ')}}</small></p>
+                            <p class="card-text m-0"> <small class="text-muted">Time: {{event.dateTime | date('H:i')}} </small></p>
+                        </div>
+                        
+                        <div class="btn-group btn-group-sm">
+                            <a href="/details/{{event.id}}" class="btn btn-outline-light">Details</a>
+                            <a href="/edit/{{event.id}}" class="btn btn-outline-light">Edit</a>
+                            <a href="/delete/{{event.id}}" class="btn btn-outline-light">Delete</a>
+                        </div>
 
                     </div>
                 </div>
