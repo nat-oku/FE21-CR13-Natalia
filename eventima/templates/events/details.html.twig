@@ -18,7 +18,7 @@
                     <p class="card-text"><small class="text-muted">Date: {{events.dateTime | date('d/m/Y')}}</small></p>
                     <p class="card-text"><small class="text-muted">Time: {{events.dateTime | date('H:i')}}</small></p>
                     <p class="card-text"><small class="text-muted">Address: {{events.eventAddress}}</small></p>
-
+                    <a class="link-dark" href="{{events.eventUrl}}"><small class="text-muted">{{events.eventUrl}}</small></a>
                 </div>
             </div>
         </div>
