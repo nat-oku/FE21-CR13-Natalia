@@ -46,13 +46,13 @@ class EventsController extends AbstractController
             ->add('event_url', TextType::class, array('attr' => array('class'=> 'form-control', 'style'=>'margin-bottom:15px')))        
 
             //date-time field
-            ->add('date_time', DateTimeType::class, array('attr' => array('style'=>'margin-bottom:15px')))
+            ->add('date_time', DateTimeType::class, array('attr' => array('class'=>'','style'=>'margin-bottom:15px')))
 
             //event-type dropdown field
             ->add('event_type', ChoiceType::class, array('choices'=>array('exhibition'=>'exhibition', 'concert'=>'concert', 'open-air cinema'=>'open-air cinema', 'festival'=>'festival'),'attr' => array('class'=> 'form-control', 'style'=>'margin-botton:15px')))
 
             //submit button
-            ->add('save', SubmitType::class, array('label'=> 'Create Event', 'attr' => array('class'=> 'btn-primary', 'style'=>'margin-bottom:15px')))
+            ->add('save', SubmitType::class, array('label'=> 'Create Event', 'attr' => array('class'=> 'btn mt-2 mb-2', 'style'=>'margin-bottom:15px')))
 
             ->getForm();
 
