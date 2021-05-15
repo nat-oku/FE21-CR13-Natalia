@@ -49,7 +49,7 @@ class EventsController extends AbstractController
             ->add('date_time', DateTimeType::class, array('attr' => array('class'=>'','style'=>'margin-bottom:15px')))
 
             //event-type dropdown field
-            ->add('event_type', ChoiceType::class, array('choices'=>array('exhibition'=>'exhibition', 'concert'=>'concert', 'open-air cinema'=>'open-air cinema', 'festival'=>'festival'),'attr' => array('class'=> 'form-control', 'style'=>'margin-botton:15px')))
+            ->add('event_type', ChoiceType::class, array('choices'=>array('exhibition'=>'exhibition', 'concert'=>'concert', 'cinema'=>'cinema', 'festival'=>'festival'),'attr' => array('class'=> 'form-control', 'style'=>'margin-botton:15px')))
 
             //submit button
             ->add('save', SubmitType::class, array('label'=> 'Create Event', 'attr' => array('class'=> 'btn mt-2 mb-2', 'style'=>'margin-bottom:15px')))
@@ -139,7 +139,7 @@ class EventsController extends AbstractController
             ->add('date_time', DateTimeType::class, array('attr' => array('style'=>'margin-bottom:15px')))
 
             //event-type dropdown field
-            ->add('event_type', ChoiceType::class, array('choices'=>array('exhibition'=>'exhibition', 'concert'=>'concert', 'open-air cinema'=>'open-air cinema', 'festival'=>'festival'),'attr' => array('class'=> 'form-control', 'style'=>'margin-botton:15px')))
+            ->add('event_type', ChoiceType::class, array('choices'=>array('exhibition'=>'exhibition', 'concert'=>'concert', 'cinema'=>'cinema', 'festival'=>'festival'),'attr' => array('class'=> 'form-control', 'style'=>'margin-botton:15px')))
 
             //submit button
             ->add('save', SubmitType::class, array('label'=> 'Save Changes', 'attr' => array('class'=> 'btn mt-2 mb-2', 'style'=>'margin-bottom:15px')))
@@ -228,8 +228,8 @@ class EventsController extends AbstractController
         } else if($event_type == 'exhibition'){
             $events  = $repository->findBy(['event_type'=>'exhibition']);
             //dd($event);    
-        } else if($event_type == 'open-air'){
-            $events  = $repository->findBy(['event_type'=>'open-air']);
+        } else if($event_type == 'cinema'){
+            $events  = $repository->findBy(['event_type'=>'cinema']);
             //dd($event);
         } else if($event_type == 'festival'){
             $events  = $repository->findBy(['event_type'=>'festival']);

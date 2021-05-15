@@ -16,7 +16,7 @@
                 <li><a class="dropdown-item" href="/">All</a></li>
                 <li><a class="dropdown-item" href="/exhibition">Exhibition</a></li>
                 <li><a class="dropdown-item" href="/concert">Concert</a></li>
-                <li><a class="dropdown-item" href="/open-air">Open Air Movies</a></li>
+                <li><a class="dropdown-item" href="/cinema">Cinema</a></li>
                 <li><a class="dropdown-item" href="/festival">Festival</a></li>
             </ul>
         </div>
@@ -24,7 +24,7 @@
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="#events">
             {% for event in eventsAll %}
             <div class="col">
-                <div class="card cardZoom">
+                <div class="card cardZoom h-100">
                 <img src="{{event.eventImg}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ event.eventName }}</h5>
