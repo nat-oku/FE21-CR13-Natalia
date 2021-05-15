@@ -65,3 +65,12 @@ nav a:hover {
   -webkit-transform: scale(1.02);
           transform: scale(1.02);
 }
+
+.detImg {
+  max-height: 15em;
+  -o-object-fit: cover;
+     object-fit: cover;
+  /* none can be an option too as cover may deform it*/
+  -o-object-position: 50% 50%;
+     object-position: 50% 50%;
+}
