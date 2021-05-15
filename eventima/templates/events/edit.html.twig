@@ -1,12 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EventsController!{% endblock %}
+{% block title %}Edit Event {{events.eventName}}{% endblock %}
 
 {% block body %}
 {{include('components/navbar.html.twig')}}
-<div class="container">
-    if you see this, edit works
-    <h2 class="page-header">Edit Event {{events.eventName}}</h2>
+<div class="container mt-3 mb-3">
+    <h2 class="page-header">Edit Event: {{events.eventName}}</h2>
     <img src="{{events.eventImg}}" class="img-thumbnail" alt="{{events.eventName}}">
     {{form_start(form)}}
 
